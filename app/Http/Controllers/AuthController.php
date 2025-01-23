@@ -46,6 +46,8 @@ class AuthController extends Controller
         $user->mobile = trim($request->mobile);
         $user->password = trim($request->password); //Hash::make(password) in model User;
         $user->role = trim($request->role);
+        $user->active = 0;
+
         //$user->remember_token = Str::random(50);
         $rec = $user->save();
 
@@ -71,7 +73,7 @@ class AuthController extends Controller
         $user = User::where('email', $credentials['email'])->first();
         if (!$user){ return back()->with('fail', 'The email does not exist in our records.'); }
         if (!Hash::check($credentials['password'], $user->password)){ return back()->with('fail', 'The provided password is incorrect.'); }
-        //if($user->activate==null){ return back()->with('fail', 'User is not Active.'); }
+        if($user->active == 0){ return back()->with('fail', 'User is not Active.'); }
 
         if (Auth::attempt($credentials,$remember, true))
         {
@@ -189,7 +191,9 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
+        $user->role = $request->role;
         $user->save();
+
         return back()->with('data_success', 'Profile updated successfully.');
     }
 

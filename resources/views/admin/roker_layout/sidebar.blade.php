@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{url('rocker');}}/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{url('2025_aru');}}/images/aru-logo-h50.png" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">Web Admin</h4>

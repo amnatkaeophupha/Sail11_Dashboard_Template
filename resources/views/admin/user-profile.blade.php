@@ -75,9 +75,6 @@
                                         <h6 class="mb-0">Full Name</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-
-
-
                                         <input type="text" name="name" class="form-control" value="{{ Auth::user()->name; }}" />
                                         @error('name')
                                         <div class="text-danger rounded pt-2">{{ $message }}</div>
